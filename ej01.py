@@ -16,9 +16,20 @@ class Cliente:
         )
 
 
-cliente_1 = Cliente("María González", "4.567.890", "0981 123 456")
-cliente_2 = Cliente("Carlos Benítez", "5.432.109", "0971 654 321")
+clientes = []
+cantidad_clientes = int(input("¿Cuántos clientes desea registrar? (mínimo 2): "))
 
-print(cliente_1)
-print()
-print(cliente_2)
+while cantidad_clientes < 2:
+    cantidad_clientes = int(input("Ingrese una cantidad de 2 o más clientes: "))
+
+for numero in range(1, cantidad_clientes + 1):
+    print(f"\nDatos del cliente {numero}")
+    nombre = input("Nombre: ")
+    cedula = input("Cédula: ")
+    telefono = input("Teléfono: ")
+    clientes.append(Cliente(nombre, cedula, telefono))
+
+print("\nFICHAS DE CLIENTES")
+for cliente in clientes:
+    print(cliente)
+    print()

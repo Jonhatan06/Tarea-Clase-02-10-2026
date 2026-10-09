@@ -51,13 +51,20 @@ class Carrito:
         return detalle
 
 
-pan = Producto("Pan lactal", 12000)
-leche = Producto("Leche entera", 7500)
-cafe = Producto("Café molido", 28000)
+cliente = input("Nombre del cliente: ")
+carrito = Carrito(cliente)
+cantidad_items = int(input("¿Cuántos productos desea agregar al carrito? "))
 
-carrito = Carrito("Valentina Gómez")
-carrito.agregar_item(Item(pan, 2))
-carrito.agregar_item(Item(leche, 3))
-carrito.agregar_item(Item(cafe, 1))
+while cantidad_items < 1:
+    cantidad_items = int(input("Ingrese por lo menos un producto: "))
+
+for numero in range(1, cantidad_items + 1):
+    print(f"\nDatos del producto {numero}")
+    nombre = input("Nombre del producto: ")
+    precio_unitario = int(input("Precio unitario en guaraníes, sin puntos: "))
+    cantidad = int(input("Cantidad: "))
+    producto = Producto(nombre, precio_unitario)
+    carrito.agregar_item(Item(producto, cantidad))
+
 print()
 print(carrito)

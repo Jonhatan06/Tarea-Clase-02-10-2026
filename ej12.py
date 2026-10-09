@@ -30,17 +30,24 @@ class LineaTelefonica:
         )
 
 
-linea = LineaTelefonica("Camila Ortiz", 10)
-print(linea)
-print()
+cliente = input("Nombre del cliente: ")
+gb_incluidos = int(input("Gigabytes incluidos en el plan: "))
+linea = LineaTelefonica(cliente, gb_incluidos)
 
-linea.registrar_consumo(4)
-print(linea)
-print()
+opcion = ""
+while opcion != "3":
+    print("\n1. Registrar consumo de datos")
+    print("2. Mostrar estado del plan")
+    print("3. Finalizar")
+    opcion = input("Seleccione una opción: ")
 
-linea.registrar_consumo(6)
-print(linea)
-print()
-
-linea.registrar_consumo(1)
-print(linea)
+    if opcion == "1":
+        gb = int(input("Gigabytes consumidos: "))
+        linea.registrar_consumo(gb)
+        print(linea)
+    elif opcion == "2":
+        print(linea)
+    elif opcion == "3":
+        print("Control de línea finalizado.")
+    else:
+        print("Opción no válida.")

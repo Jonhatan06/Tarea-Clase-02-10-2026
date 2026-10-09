@@ -19,12 +19,20 @@ class Producto:
         )
 
 
-arroz = Producto("Arroz de 1 kg", 8500, 25)
-aceite = Producto("Aceite de 900 ml", 14500, 18)
-yerba = Producto("Yerba mate de 1 kg", 21000, 12)
+productos = []
+cantidad_productos = int(input("¿Cuántos productos desea registrar? (2 o 3): "))
 
-print(arroz)
-print()
-print(aceite)
-print()
-print(yerba)
+while cantidad_productos < 2 or cantidad_productos > 3:
+    cantidad_productos = int(input("Ingrese solamente 2 o 3 productos: "))
+
+for numero in range(1, cantidad_productos + 1):
+    print(f"\nDatos del producto {numero}")
+    nombre = input("Nombre: ")
+    precio_unitario = int(input("Precio unitario en guaraníes, sin puntos: "))
+    cantidad_stock = int(input("Cantidad en stock: "))
+    productos.append(Producto(nombre, precio_unitario, cantidad_stock))
+
+print("\nPRODUCTOS REGISTRADOS")
+for producto in productos:
+    print(producto)
+    print()

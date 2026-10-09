@@ -26,17 +26,29 @@ class CuentaCorriente:
         return f"Cuenta de {self.titular}: saldo disponible {self.saldo:,.0f} Gs."
 
 
-cuenta = CuentaCorriente("Ana Martínez")
-print(cuenta)
+titular = input("Nombre del titular de la cuenta: ")
+saldo_inicial = int(input("Saldo inicial en guaraníes, sin puntos: "))
+cuenta = CuentaCorriente(titular, saldo_inicial)
 
-cuenta.acreditar_saldo(100000)
-print(cuenta)
+opcion = ""
+while opcion != "4":
+    print("\n1. Acreditar saldo")
+    print("2. Registrar consumo")
+    print("3. Mostrar estado de la cuenta")
+    print("4. Finalizar")
+    opcion = input("Seleccione una opción: ")
 
-cuenta.registrar_consumo(35000)
-print(cuenta)
-
-cuenta.registrar_consumo(80000)
-print(cuenta)
-
-cuenta.acreditar_saldo(50000)
-print(cuenta)
+    if opcion == "1":
+        monto = int(input("Monto a acreditar, sin puntos: "))
+        cuenta.acreditar_saldo(monto)
+        print(cuenta)
+    elif opcion == "2":
+        monto = int(input("Monto del consumo, sin puntos: "))
+        cuenta.registrar_consumo(monto)
+        print(cuenta)
+    elif opcion == "3":
+        print(cuenta)
+    elif opcion == "4":
+        print("Operaciones finalizadas.")
+    else:
+        print("Opción no válida.")

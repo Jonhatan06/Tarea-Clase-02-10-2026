@@ -1,6 +1,6 @@
 # Tarea 1 - Segunda etapa
 
-**Nombre del estudiante:** Jonhatan Rodrigo Legal Alfonso
+**Nombre del estudiante:** Jonhatan Legal
 
 Este repositorio contiene los ejercicios de Programación Orientada a Objetos de la Unidad IV de Python Lenguaje I.
 
@@ -19,9 +19,3 @@ Este repositorio contiene los ejercicios de Programación Orientada a Objetos de
 | `ej11.py` | Estudiante y sus materias |
 | `ej12.py` | Cuenta de servicio con planes |
 | `ej13.py` | Habitación de un hotel |
-
-Cada archivo se puede ejecutar de forma independiente con Python 3. Por ejemplo:
-
-```bash
-python ej01.py
-```

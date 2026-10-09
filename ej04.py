@@ -20,9 +20,25 @@ class Libro:
         )
 
 
-libro_1 = Libro("Yo, el Supremo", "Augusto Roa Bastos", True)
-libro_2 = Libro("Don Quijote de la Mancha", "Miguel de Cervantes", False)
+libros = []
+cantidad_libros = int(input("¿Cuántos libros desea registrar? (mínimo 2): "))
 
-print(libro_1)
-print()
-print(libro_2)
+while cantidad_libros < 2:
+    cantidad_libros = int(input("Ingrese una cantidad de 2 o más libros: "))
+
+for numero in range(1, cantidad_libros + 1):
+    print(f"\nDatos del libro {numero}")
+    titulo = input("Título: ")
+    autor = input("Autor: ")
+    estado = input("Estado (disponible/prestado): ").lower()
+
+    while estado != "disponible" and estado != "prestado":
+        estado = input("Escriba disponible o prestado: ").lower()
+
+    disponible = estado == "disponible"
+    libros.append(Libro(titulo, autor, disponible))
+
+print("\nLIBROS REGISTRADOS")
+for libro in libros:
+    print(libro)
+    print()

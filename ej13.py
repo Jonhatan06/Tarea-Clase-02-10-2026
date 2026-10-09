@@ -37,18 +37,33 @@ class Habitacion:
         )
 
 
-habitacion = Habitacion(204, "Doble", 420000)
-print(habitacion)
-print()
+numero = input("Número de habitación: ")
+tipo = input("Tipo de habitación: ")
+tarifa_por_noche = int(input("Tarifa por noche en guaraníes, sin puntos: "))
+habitacion = Habitacion(numero, tipo, tarifa_por_noche)
 
-habitacion.ocupar()
-print(habitacion)
-print()
+opcion = ""
+while opcion != "5":
+    print("\n1. Ocupar habitación")
+    print("2. Liberar habitación")
+    print("3. Calcular costo de estadía")
+    print("4. Mostrar estado de la habitación")
+    print("5. Finalizar")
+    opcion = input("Seleccione una opción: ")
 
-noches = 3
-costo = habitacion.calcular_costo_estadia(noches)
-print(f"Costo de la estadía por {noches} noches: {costo:,.0f} Gs.")
-print()
-
-habitacion.liberar()
-print(habitacion)
+    if opcion == "1":
+        habitacion.ocupar()
+        print(habitacion)
+    elif opcion == "2":
+        habitacion.liberar()
+        print(habitacion)
+    elif opcion == "3":
+        cantidad_noches = int(input("Cantidad de noches: "))
+        costo = habitacion.calcular_costo_estadia(cantidad_noches)
+        print(f"Costo de la estadía: {costo:,.0f} Gs.")
+    elif opcion == "4":
+        print(habitacion)
+    elif opcion == "5":
+        print("Gestión de habitación finalizada.")
+    else:
+        print("Opción no válida.")

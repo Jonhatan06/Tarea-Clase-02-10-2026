@@ -37,9 +37,16 @@ class Estudiante:
         return boletin
 
 
-estudiante = Estudiante("Nicolás Vera")
-estudiante.registrar_nota("Programación", 9)
-estudiante.registrar_nota("Matemática", 8)
-estudiante.registrar_nota("Inglés", 7)
+nombre = input("Nombre del estudiante: ")
+estudiante = Estudiante(nombre)
+
+print("Escriba las materias y sus notas. Para finalizar, escriba fin como materia.")
+materia = input("Materia: ")
+
+while materia.lower() != "fin":
+    nota = int(input("Nota de 0 a 10: "))
+    estudiante.registrar_nota(materia, nota)
+    materia = input("Materia: ")
+
 print()
 print(estudiante)

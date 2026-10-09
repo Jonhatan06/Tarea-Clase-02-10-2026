@@ -31,6 +31,12 @@ class Agenda:
                 pendientes.append(turno)
         return pendientes
 
+    def mostrar_turnos(self):
+        contenido = f"Turnos de la agenda del {self.fecha}:\n"
+        for posicion in range(len(self.turnos)):
+            contenido += f"{posicion + 1}. {self.turnos[posicion]}\n"
+        return contenido.rstrip()
+
     def __str__(self):
         contenido = f"Turnos pendientes del {self.fecha}:\n"
         pendientes = self.listar_pendientes()
@@ -43,17 +49,37 @@ class Agenda:
         return contenido.rstrip()
 
 
-agenda = Agenda("08/10/2026")
-turno_1 = Turno("Sofía López", "08:00")
-turno_2 = Turno("Miguel Duarte", "09:00")
-turno_3 = Turno("Paula Acosta", "10:00")
+fecha = input("Fecha de la agenda: ")
+agenda = Agenda(fecha)
 
-agenda.agendar_turno(turno_1)
-agenda.agendar_turno(turno_2)
-agenda.agendar_turno(turno_3)
-print()
+opcion = ""
+while opcion != "5":
+    print("\n1. Agendar turno")
+    print("2. Marcar turno como atendido")
+    print("3. Mostrar todos los turnos")
+    print("4. Mostrar turnos pendientes")
+    print("5. Finalizar")
+    opcion = input("Seleccione una opción: ")
 
-turno_1.marcar_atendido()
-turno_3.marcar_atendido()
-print()
-print(agenda)
+    if opcion == "1":
+        paciente = input("Nombre del paciente: ")
+        hora = input("Hora del turno: ")
+        agenda.agendar_turno(Turno(paciente, hora))
+    elif opcion == "2":
+        if len(agenda.turnos) == 0:
+            print("No hay turnos agendados.")
+        else:
+            print(agenda.mostrar_turnos())
+            numero_turno = int(input("Número del turno atendido: "))
+            if 1 <= numero_turno <= len(agenda.turnos):
+                agenda.turnos[numero_turno - 1].marcar_atendido()
+            else:
+                print("Número de turno no válido.")
+    elif opcion == "3":
+        print(agenda.mostrar_turnos())
+    elif opcion == "4":
+        print(agenda)
+    elif opcion == "5":
+        print("Agenda finalizada.")
+    else:
+        print("Opción no válida.")

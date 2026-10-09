@@ -19,9 +19,20 @@ class Empleado:
         )
 
 
-empleado_1 = Empleado("Lucía Fernández", "Asistente administrativa", 3500000)
-empleado_2 = Empleado("Diego Rojas", "Analista de sistemas", 6200000)
+empleados = []
+cantidad_empleados = int(input("¿Cuántos empleados desea registrar? "))
 
-print(empleado_1)
-print()
-print(empleado_2)
+while cantidad_empleados < 1:
+    cantidad_empleados = int(input("Ingrese por lo menos un empleado: "))
+
+for numero in range(1, cantidad_empleados + 1):
+    print(f"\nDatos del empleado {numero}")
+    nombre = input("Nombre: ")
+    cargo = input("Cargo: ")
+    salario_mensual = int(input("Salario mensual en guaraníes, sin puntos: "))
+    empleados.append(Empleado(nombre, cargo, salario_mensual))
+
+print("\nEMPLEADOS REGISTRADOS")
+for empleado in empleados:
+    print(empleado)
+    print()

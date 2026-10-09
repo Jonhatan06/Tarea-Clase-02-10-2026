@@ -36,14 +36,30 @@ class Producto:
         )
 
 
-producto = Producto("Agua mineral de 500 ml", 12, 5)
-print(producto)
+nombre = input("Nombre del producto: ")
+stock_inicial = int(input("Stock inicial: "))
+stock_minimo = int(input("Stock mínimo: "))
+producto = Producto(nombre, stock_inicial, stock_minimo)
 
-producto.registrar_venta(8)
-print(producto)
+opcion = ""
+while opcion != "4":
+    print("\n1. Ingresar mercadería")
+    print("2. Registrar venta")
+    print("3. Mostrar stock")
+    print("4. Finalizar")
+    opcion = input("Seleccione una opción: ")
 
-producto.registrar_venta(6)
-print(producto)
-
-producto.ingresar_mercaderia(15)
-print(producto)
+    if opcion == "1":
+        cantidad = int(input("Cantidad que ingresa: "))
+        producto.ingresar_mercaderia(cantidad)
+        print(producto)
+    elif opcion == "2":
+        cantidad = int(input("Cantidad vendida: "))
+        producto.registrar_venta(cantidad)
+        print(producto)
+    elif opcion == "3":
+        print(producto)
+    elif opcion == "4":
+        print("Control de stock finalizado.")
+    else:
+        print("Opción no válida.")

@@ -42,10 +42,17 @@ class ListaReproduccion:
         return contenido
 
 
-lista = ListaReproduccion("Favoritas")
-lista.agregar_cancion(Cancion("Latinoamérica", "Calle 13", 275))
-lista.agregar_cancion(Cancion("El tiempo está después", "Fernando Cabrera", 247))
-lista.agregar_cancion(Cancion("Vivir mi vida", "Marc Anthony", 252))
+nombre_lista = input("Nombre de la lista de reproducción: ")
+lista = ListaReproduccion(nombre_lista)
+agregar_otra = "si"
+
+while agregar_otra == "si":
+    print("\nDatos de la canción")
+    titulo = input("Título: ")
+    artista = input("Artista: ")
+    duracion = int(input("Duración en segundos: "))
+    lista.agregar_cancion(Cancion(titulo, artista, duracion))
+    agregar_otra = input("¿Desea agregar otra canción? (si/no): ").lower()
 
 print()
 print(lista)

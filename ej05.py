@@ -16,8 +16,20 @@ class Vehiculo:
         return f"Vehículo publicado: {self.descripcion_comercial()}"
 
 
-vehiculo_1 = Vehiculo("Toyota", "Corolla", 2020, 95000000)
-vehiculo_2 = Vehiculo("Kia", "Sportage", 2022, 165000000)
+vehiculos = []
+cantidad_vehiculos = int(input("¿Cuántos vehículos desea registrar? (mínimo 2): "))
 
-print(vehiculo_1)
-print(vehiculo_2)
+while cantidad_vehiculos < 2:
+    cantidad_vehiculos = int(input("Ingrese una cantidad de 2 o más vehículos: "))
+
+for numero in range(1, cantidad_vehiculos + 1):
+    print(f"\nDatos del vehículo {numero}")
+    marca = input("Marca: ")
+    modelo = input("Modelo: ")
+    anio = int(input("Año: "))
+    precio = int(input("Precio en guaraníes, sin puntos: "))
+    vehiculos.append(Vehiculo(marca, modelo, anio, precio))
+
+print("\nVEHÍCULOS PARA PUBLICAR")
+for vehiculo in vehiculos:
+    print(vehiculo)
